@@ -4,7 +4,7 @@ using SharedApiCore.Domain.Exceptions;
 
 namespace SharedApiCore.Domain.Entities
 {
-    [DynamoDBTable("Pessoa")]
+    [DynamoDBTable("Pessoas")]
     public class Pessoa : EntityBase
     {
         public Pessoa(string nomePessoa)

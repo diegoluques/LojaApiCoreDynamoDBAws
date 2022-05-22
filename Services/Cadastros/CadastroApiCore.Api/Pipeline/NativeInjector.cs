@@ -24,6 +24,7 @@ namespace CadastroApiCore.API.Pipeline
 
             builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>();
             builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
+            builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
         }
 
         public static void ConfigureAutoMapper(WebApplicationBuilder builder)

@@ -10,6 +10,8 @@ namespace CadastroApiCore.API.AutoMapper
         {
             CreateMap<PessoaInsertDto, Pessoa>();
             CreateMap<PessoaUpdateDto, Pessoa>();
+            CreateMap<ProdutoInsertDto, Produto>();
+            CreateMap<ProdutoUpdateDto, Produto>();
         }
     }
 }
