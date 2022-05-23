@@ -1,11 +1,10 @@
-﻿using SharedApiCore.Domain.Entities;
+﻿using SharedApiCore.Domain.DataTransferObjects;
+using SharedApiCore.Domain.Entities;
 
 namespace SharedApiCore.Domain.Contracts
 {
-    public interface IPessoaService : IDisposable
+    public interface IPessoaService : IBaseService<Pessoa>
     {
-        Task<bool> Adicionar(Pessoa pessoa);
-        Task<bool> Atualizar(Pessoa pessoa);
-        Task<bool> Remover(Guid id);
+        Task<Pessoa> SavePhoto(PessoaInsertPhotoDto entity);
     }
 }

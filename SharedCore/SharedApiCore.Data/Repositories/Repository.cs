@@ -28,8 +28,17 @@ namespace SharedApiCore.Data.Repositories
 
         public async Task<TEntity> Save(TEntity entity)
         {
+            try
+            {
+
             await _context.SaveAsync(entity);
             return entity;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
         public async Task Delete(Guid id)

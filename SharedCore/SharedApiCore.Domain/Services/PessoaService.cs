@@ -1,44 +1,61 @@
-﻿using CadastroApiCore.Domain.Contracts;
-using CadastroApiCore.Domain.Contracts.Repositories;
-using CadastroApiCore.Domain.Entities;
-using CadastroApiCore.Domain.Entities.Validations;
+﻿using SharedApiCore.Domain.Contracts;
+using SharedApiCore.Domain.Contracts.Repositories;
+using SharedApiCore.Domain.DataTransferObjects;
+using SharedApiCore.Domain.Entities;
 
 namespace CadastroApiCore.Domain.Services
 {
-    public class PessoaService : BaseService, IPessoaService
+    public class PessoaService : IPessoaService 
     {
-        private readonly IPessoaRepository _PessoaRepository;
+        private readonly IPessoaRepository _pessoaRepository;
+        private readonly IFileService _fileService;
 
-        public PessoaService(IPessoaRepository pessoaRepository, INotifier notificador) : base(notificador)
+        public PessoaService(IPessoaRepository pessoaRepository, IFileService fileService)
         {
-            _PessoaRepository = pessoaRepository;
+            _pessoaRepository = pessoaRepository;
+            _fileService = fileService;
         }
 
-        public async Task<bool> Adicionar(Pessoa Pessoa)
+        Task<IEnumerable<Pessoa>> IBaseService<Pessoa>.GetAll()
         {
-            if (!ExecutarValidacao(new PessoaValidation(), Pessoa)) return false;
-
-            await _PessoaRepository.Adicionar(Pessoa);
-            return true;
+            return this._pessoaRepository.GetAll();
         }
 
-        public async Task<bool> Atualizar(Pessoa Pessoa)
+        Task<Pessoa> IBaseService<Pessoa>.GetId(Guid id)
         {
-            if (!ExecutarValidacao(new PessoaValidation(), Pessoa)) return false;
-
-            await _PessoaRepository.Atualizar(Pessoa);
-            return true;
+            return this._pessoaRepository.GetId(id);
         }
 
-        public async Task<bool> Remover(Guid id)
+        Task<Pessoa> IBaseService<Pessoa>.Save(Pessoa entity)
         {
-            await _PessoaRepository.Remover(id);
-            return true;
+            return this._pessoaRepository.Save(entity);
         }
 
-        public void Dispose()
+        Task IBaseService<Pessoa>.Delete(Guid id)
         {
-            _PessoaRepository?.Dispose();
+            return this._pessoaRepository.Delete(id);
+        }
+
+        public Task<Pessoa> SavePhoto(PessoaInsertPhotoDto entity)
+        {
+            var pessoa = new Pessoa
+            {
+                NomePessoa = entity.NomePessoa,
+                Telefone = entity.Telefone, 
+            };
+            foreach (var file in entity.Fotos)
+            {
+                var foto = Foto.Create(); 
+                foto.NomeArquivo = file.FileName;
+                foto.TipoArquivo = file.ContentType;
+
+                var fileServiceResult = _fileService.Save(file, foto.FotoId.ToString());
+                foto.Caminho = fileServiceResult.Url;
+
+                pessoa?.Fotos?.Add(foto);
+            }
+
+            return this._pessoaRepository.Save(pessoa);
         }
     }
 }

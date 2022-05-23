@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Integrations\LojaApiCore.Integrations.Storage\LojaApiCore.Integrations.Storage.csproj" />
     <ProjectReference Include="..\CadastroApiCore.Data\CadastroApiCore.Data.csproj" />
   </ItemGroup>
 

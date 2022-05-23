@@ -2,7 +2,11 @@
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using CadastroApiCore.Data.Repositories;
+using CadastroApiCore.Domain.Services;
+using LojaApiCore.Integrations.Storage;
+using SharedApiCore.Domain.Contracts;
 using SharedApiCore.Domain.Contracts.Repositories;
+using SharedApiCore.Domain.Services;
 
 namespace CadastroApiCore.API.Pipeline
 {
@@ -25,6 +29,9 @@ namespace CadastroApiCore.API.Pipeline
             builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>();
             builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
             builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
+            builder.Services.AddScoped<IPessoaService, PessoaService>();
+            builder.Services.AddScoped<IFileService, S3Service>();
         }
 
         public static void ConfigureAutoMapper(WebApplicationBuilder builder)

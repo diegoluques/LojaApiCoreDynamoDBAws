@@ -27,6 +27,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaApiCore.Data", "Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaApiCore.Tests", "Services\Vendas\VendaApiCore.Tests\VendaApiCore.Tests.csproj", "{F4266190-F265-4AD2-B6F3-4E183CF148D2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integrations", "{F4410C67-56F7-4431-AFF1-C97A3B85C658}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LojaApiCore.Integrations.Storage", "Integrations\LojaApiCore.Integrations.Storage\LojaApiCore.Integrations.Storage.csproj", "{F8CF61FB-89E5-4529-B26B-49299AA7D756}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +69,10 @@ Global
 		{F4266190-F265-4AD2-B6F3-4E183CF148D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4266190-F265-4AD2-B6F3-4E183CF148D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4266190-F265-4AD2-B6F3-4E183CF148D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8CF61FB-89E5-4529-B26B-49299AA7D756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8CF61FB-89E5-4529-B26B-49299AA7D756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8CF61FB-89E5-4529-B26B-49299AA7D756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8CF61FB-89E5-4529-B26B-49299AA7D756}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +88,7 @@ Global
 		{532ACAB0-5057-4D6B-AF02-B73A80457C57} = {8F8931DB-75F2-4BE8-B797-40257A1008E1}
 		{9EFBA8D0-5074-40E7-AB78-3FA25EBBD35C} = {8F8931DB-75F2-4BE8-B797-40257A1008E1}
 		{F4266190-F265-4AD2-B6F3-4E183CF148D2} = {8F8931DB-75F2-4BE8-B797-40257A1008E1}
+		{F8CF61FB-89E5-4529-B26B-49299AA7D756} = {F4410C67-56F7-4431-AFF1-C97A3B85C658}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {717354F1-4A6C-4C03-9428-D37EF29E53D6}
